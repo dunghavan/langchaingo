@@ -85,6 +85,16 @@ func WithCredentialsFile(credentialsFile string) Option {
 	}
 }
 
+// dunghv add withEndpoint
+func WithEndpoint(endpoint string) Option {
+	return func(opts *Options) {
+		if endpoint == "" {
+			return
+		}
+		opts.ClientOptions = append(opts.ClientOptions, option.WithEndpoint(endpoint))
+	}
+}
+
 // WithRest configures the client to use the REST API.
 func WithRest() Option {
 	return func(opts *Options) {
